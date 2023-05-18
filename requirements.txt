@@ -1,0 +1,20 @@
+# Set base image
+FROM python:3.11-slim-buster
+
+# Set working directory
+WORKDIR /main
+
+# Copy requirements file
+COPY requirements.txt .
+
+# Install required packages
+RUN pip install -r requirements.txt
+
+# Copy source code to container
+COPY . .
+
+# Expose port for Flask API
+EXPOSE 5000
+
+# Start the application
+CMD ["python", "main.py"]
